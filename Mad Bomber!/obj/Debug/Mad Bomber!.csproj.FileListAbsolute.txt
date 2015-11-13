@@ -1,0 +1,9 @@
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\bin\Debug\Mad Bomber!.exe.config
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\bin\Debug\Mad Bomber!.exe
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\bin\Debug\Mad Bomber!.pdb
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\obj\Debug\Mad Bomber!.csprojResolveAssemblyReference.cache
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\obj\Debug\Mad_Bomber_.Properties.Resources.resources
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\obj\Debug\Mad Bomber!.csproj.GenerateResource.Cache
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\obj\Debug\Mad Bomber!.exe
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\obj\Debug\Mad Bomber!.pdb
+c:\users\максим\documents\visual studio 2013\Projects\Mad Bomber!\Mad Bomber!\obj\Debug\Mad_Bomber_.MainForm.resources
