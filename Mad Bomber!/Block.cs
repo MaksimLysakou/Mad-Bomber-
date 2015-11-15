@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 using Tao.OpenGl;
-using Tao.FreeGlut;
-using Tao.Platform.Windows;
-using Tao.DevIl;
 
 namespace Mad_Bomber_
 {
@@ -18,6 +15,8 @@ namespace Mad_Bomber_
 
         private bool destroyable;
         private bool passeble;
+
+        public int type;
 
         public Block(string pathToTexture, float X, float Y, bool destroyable, bool passeble = false) : base(pathToTexture)
         {
@@ -50,7 +49,7 @@ namespace Mad_Bomber_
             return passeble;
         }
 
-        public void Draw(SimpleOpenGlControl RenderWindow, float scale = 1.0f)
+        public void Draw(float scale = 1.0f, float rot = 0.0f)
         {
 
             // включаем режим текстурирования 
@@ -65,9 +64,9 @@ namespace Mad_Bomber_
             // выполняем перемещение для более наглядного представления сцены 
             Gl.glTranslated(this.position.X, this.position.Y, 0);
             // реализуем поворот объекта 
-            Gl.glRotated(0, 0, 1, 0);
+            Gl.glRotated(rot, 0, 0, 1);
 
-            Gl.glScalef((0.0030f * scale * this.size.X * RenderWindow.Height / RenderWindow.Width), 0.0030f * scale * this.size.Y, 0.0f);
+            Gl.glScalef((0.0030f * scale * this.size.Y * Texture.RenderWindow.Height / Texture.RenderWindow.Width), 0.0030f * scale * this.size.X, 0.0f);
 
             // отрисовываем полигон 
             Gl.glBegin(Gl.GL_QUADS);

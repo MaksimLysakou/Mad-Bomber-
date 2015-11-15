@@ -14,6 +14,31 @@ namespace Mad_Bomber_
 {
     class Texture
     {
+        public static SimpleOpenGlControl RenderWindow;
+        public static void OpenGLInit(SimpleOpenGlControl RenderWindow)
+        {
+            Texture.RenderWindow = RenderWindow;
+
+            Glut.glutInit();
+            Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
+
+            // инициализация библиотеки openIL 
+            Il.ilInit();
+            Il.ilEnable(Il.IL_ORIGIN_SET);
+
+            Gl.glClearColor(255, 255, 255, 1); // отчитка окна 
+
+            Gl.glViewport(0, 0, RenderWindow.Width, RenderWindow.Height); // установка порта вывода в соответствии с размерами окна
+
+
+            // настройка проекции 
+            Gl.glMatrixMode(Gl.GL_PROJECTION);
+            Gl.glLoadIdentity();
+            Glu.gluPerspective(0, (float)RenderWindow.Width / (float)RenderWindow.Height, 0.1, 200);
+            Gl.glMatrixMode(Gl.GL_MODELVIEW);
+            Gl.glLoadIdentity();
+
+        }
         public static int getTexture(string url)
         {
             int mGlTextureObject = -1;
@@ -54,9 +79,7 @@ namespace Mad_Bomber_
         {
             int imageId = 0;
 
-            // создаем изображение с идентификатором imageId 
             Il.ilGenImages(1, out imageId);
-            // делаем изображение текущим 
             Il.ilBindImage(imageId);
 
             Il.ilLoadImage(url);
