@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GameObj.cs" />
+    <Compile Include="Keyboard.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="NPC.cs" />
     <Compile Include="Player.cs" />
