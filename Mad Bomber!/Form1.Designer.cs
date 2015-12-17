@@ -45,11 +45,9 @@
             this.RenderWindow.DepthBits = ((byte)(16));
             this.RenderWindow.Location = new System.Drawing.Point(0, 0);
             this.RenderWindow.Name = "RenderWindow";
-            this.RenderWindow.Size = new System.Drawing.Size(904, 471);
+            this.RenderWindow.Size = new System.Drawing.Size(911, 492);
             this.RenderWindow.StencilBits = ((byte)(0));
             this.RenderWindow.TabIndex = 0;
-            this.RenderWindow.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RenderWindow_KeyDown);
-            this.RenderWindow.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RenderWindow_KeyUp);
             // 
             // drawTimer
             // 
@@ -61,7 +59,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 466);
+            this.ClientSize = new System.Drawing.Size(907, 492);
             this.Controls.Add(this.RenderWindow);
             this.Name = "MainForm";
             this.Text = "Form1";

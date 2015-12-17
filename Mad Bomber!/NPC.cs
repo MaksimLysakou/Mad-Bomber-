@@ -15,26 +15,34 @@ namespace Mad_Bomber_
 
         //public GameObj.Direction direction;
 
-        public NPC(float y, float x):base("img//heroK.png")
+        public NPC()
         {
             //TODO: add NPC
-            position = new PointF(x, y);
-            this.speed = 0.5f;
         }
 
         public void Draw(float scale = 1.0f, float rot = 0.0f)
         {
+
+            // включаем режим текстурирования 
             Gl.glEnable(Gl.GL_TEXTURE_2D);
+
+            // включаем режим текстурирования, указывая идентификатор mGlTextureObject 
             Gl.glBindTexture(Gl.GL_TEXTURE_2D, this.texture);
 
+            // сохраняем состояние матрицы 
+            Gl.glPushMatrix();
 
-            Gl.glTranslated((Texture.RenderWindow.Location.X + this.position.X) * 0.1f - 1, (Texture.RenderWindow.Location.Y + this.position.Y) * 0.05f - 1, 1);
+            // выполняем перемещение для более наглядного представления сцены 
+            Gl.glTranslated(this.position.X, this.position.Y, 0);
+            // реализуем поворот объекта 
             Gl.glRotated(rot, 0, 0, 1);
-            Gl.glScalef((0.0015f * scale * this.size.Y * Texture.RenderWindow.Width / Texture.RenderWindow.Height), 0.0015f * scale * this.size.X, 0.0f);
 
+            Gl.glScalef((0.0030f * scale * this.size.Y * Texture.RenderWindow.Height / Texture.RenderWindow.Width), 0.0030f * scale * this.size.X, 0.0f);
 
+            // отрисовываем полигон 
             Gl.glBegin(Gl.GL_QUADS);
 
+            // указываем поочередно вершины и текстурные координаты 
             Gl.glVertex2d(0, 0);
             Gl.glTexCoord2f(0, 0);
             Gl.glVertex2d(1, 0);
@@ -44,12 +52,13 @@ namespace Mad_Bomber_
             Gl.glVertex2d(0, 1);
             Gl.glTexCoord2f(0, 1);
 
+            // завершаем отрисовку 
             Gl.glEnd();
 
-            
+            // возвращаем матрицу 
             Gl.glPopMatrix();
+            // отключаем режим текстурирования 
             Gl.glDisable(Gl.GL_TEXTURE_2D);
         }
-
     }
 }

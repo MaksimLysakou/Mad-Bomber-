@@ -33,20 +33,18 @@ namespace Mad_Bomber_
             {
                 Level thisLevel = new Level("");
 
-                thisLevel.size.X = int.Parse(level.Attribute("sizeX").Value);
-                thisLevel.size.Y = int.Parse(level.Attribute("sizeY").Value);
-
                 thisLevel.Name = level.Attribute("name").Value;
 
                 foreach (XElement block in level.Elements())
                 {
-                    thisLevel.blocks.Add(new Block(gameObjs[int.Parse(block.Attribute("type").Value)],
-                                                   float.Parse(block.Attribute("X").Value),
-                                                   float.Parse(block.Attribute("Y").Value),
-                                                   bool.Parse(block.Attribute("destroyable").Value),
-                                                   bool.Parse(block.Attribute("passeble").Value)
-                                                  )
-                                        );
+
+                    GameObj g = gameObjs[int.Parse(block.Attribute("type").Value)];
+                    float a = float.Parse(block.Attribute("X").Value);
+                    float b = float.Parse(block.Attribute("Y").Value);
+                    bool q = bool.Parse(block.Attribute("destroyable").Value);
+                    bool z = bool.Parse(block.Attribute("passeble").Value);
+
+                    thisLevel.blocks.Add(new Block(g, a, b, q, z));
                 }
 
                 levels.Add(thisLevel);
