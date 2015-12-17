@@ -28,13 +28,14 @@ namespace Mad_Bomber_
 
             Gl.glClearColor(255, 255, 255, 1); // отчитка окна 
 
-            Gl.glViewport(0, 0, RenderWindow.Width, RenderWindow.Height); // установка порта вывода в соответствии с размерами окна
-
-
+             // установка порта вывода в соответствии с размерами окна
+            
             // настройка проекции 
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
-            Glu.gluPerspective(0, (float)RenderWindow.Width / (float)RenderWindow.Height, 0.1, 200);
+            Gl.glRotatef(270, 0, 0, 1);
+            Glu.gluPerspective(0, RenderWindow.Width / (float)RenderWindow.Height, 0.1, 200);
+            //Gl.glTranslated(RenderWindow.Location.X, RenderWindow.Location.Y, 1);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
 

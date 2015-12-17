@@ -25,6 +25,7 @@ namespace Mad_Bomber_
 
             this.passeble = passeble;
         }
+
         public Block(Block block)
         {
             this.position = block.position;
@@ -33,6 +34,7 @@ namespace Mad_Bomber_
             this.size = block.size;
             this.passeble = block.passeble;
         }
+
         public Block(GameObj obj, float X, float Y, bool destroyable, bool passeble = false): base(obj)
         {
             this.position = new PointF(X, Y);
@@ -61,17 +63,22 @@ namespace Mad_Bomber_
             // сохраняем состояние матрицы 
             Gl.glPushMatrix();
 
+           
+
+            
+
+            // указываем поочередно вершины и текстурные координаты 
+
             // выполняем перемещение для более наглядного представления сцены 
-            Gl.glTranslated(this.position.X, this.position.Y, 0);
+            Gl.glTranslated((Texture.RenderWindow.Location.X + this.position.X) * 0.1f - 1, (Texture.RenderWindow.Location.Y + this.position.Y) * 0.05f - 1, 1);
             // реализуем поворот объекта 
             Gl.glRotated(rot, 0, 0, 1);
 
-            Gl.glScalef((0.0030f * scale * this.size.Y * Texture.RenderWindow.Height / Texture.RenderWindow.Width), 0.0030f * scale * this.size.X, 0.0f);
+            Gl.glScalef((0.0015f * scale * this.size.Y * Texture.RenderWindow.Width / Texture.RenderWindow.Height), 0.0015f * scale * this.size.X, 0.0f);
+
 
             // отрисовываем полигон 
             Gl.glBegin(Gl.GL_QUADS);
-
-            // указываем поочередно вершины и текстурные координаты 
             Gl.glVertex2d(0, 0);
             Gl.glTexCoord2f(0, 0);
             Gl.glVertex2d(1, 0);
