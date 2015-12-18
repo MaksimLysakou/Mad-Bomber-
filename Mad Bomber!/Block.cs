@@ -18,10 +18,14 @@ namespace Mad_Bomber_
 
         public int type;
 
-        public Block(string pathToTexture, float X, float Y, bool destroyable, bool passeble = false) : base(pathToTexture)
+        public Block(string pathToTexture, float X, float Y, float scale = 0.03125f, bool destroyable = true, bool passeble = false)
+            : base(pathToTexture)
         {
             this.position = new PointF(X, Y);
             this.destroyable = destroyable;
+
+            this.size.X *= scale;
+            this.size.Y *= scale;
 
             this.passeble = passeble;
         }
@@ -35,12 +39,15 @@ namespace Mad_Bomber_
             this.passeble = block.passeble;
         }
 
-        public Block(GameObj obj, float X, float Y, bool destroyable, bool passeble = false): base(obj)
+        public Block(GameObj obj, float X, float Y, float scale = 0.03125f, bool destroyable = true, bool passeble = false)
+            : base(obj)
         {
             this.position = new PointF(X, Y);
             this.destroyable = destroyable;
-
             this.passeble = passeble;
+
+            this.size.X *= scale;
+            this.size.Y *= scale;
         }
         public bool isDestroyable()
         {
@@ -53,28 +60,15 @@ namespace Mad_Bomber_
 
         public void Draw(float scale = 1.0f, float rot = 0.0f)
         {
-
-            // включаем режим текстурирования 
             Gl.glEnable(Gl.GL_TEXTURE_2D);
-
-            // включаем режим текстурирования, указывая идентификатор mGlTextureObject 
             Gl.glBindTexture(Gl.GL_TEXTURE_2D, this.texture);
 
-            // сохраняем состояние матрицы 
-            Gl.glPushMatrix();
-
-           
-
             
-
-            // указываем поочередно вершины и текстурные координаты 
-
-            // выполняем перемещение для более наглядного представления сцены 
+            Gl.glPushMatrix();
             Gl.glTranslated((Texture.RenderWindow.Location.X + this.position.X) * 0.1f - 1, (Texture.RenderWindow.Location.Y + this.position.Y) * 0.05f - 1, 1);
-            // реализуем поворот объекта 
             Gl.glRotated(rot, 0, 0, 1);
 
-            Gl.glScalef((0.0015f * scale * this.size.Y * Texture.RenderWindow.Width / Texture.RenderWindow.Height), 0.0015f * scale * this.size.X, 0.0f);
+            Gl.glScalef((0.05f * scale * this.size.Y * Texture.RenderWindow.Width / Texture.RenderWindow.Height), 0.05f * scale * this.size.X, 0.0f);
 
 
             // отрисовываем полигон 
@@ -95,6 +89,11 @@ namespace Mad_Bomber_
             Gl.glPopMatrix();
             // отключаем режим текстурирования 
             Gl.glDisable(Gl.GL_TEXTURE_2D);
+        }   
+        public bool IsCrossed(Block block)
+        {
+            return (((this.position.X > block.position.X) && (this.position.Y > block.position.Y)) && ((this.position.X < block.position.X + block.size.X) && (this.position.Y < block.position.Y + block.size.Y)) ||
+                    ((this.position.X + this.size.X > block.position.X) && (this.position.Y + this.size.Y > block.position.Y)) && ((this.position.X + this.size.X < block.position.X + block.size.X) && (this.position.Y + this.size.Y < block.position.Y + block.size.Y)));
         }
     }
 }

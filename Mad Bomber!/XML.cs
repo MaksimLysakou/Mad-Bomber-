@@ -43,8 +43,8 @@ namespace Mad_Bomber_
                     thisLevel.blocks.Add(new Block(gameObjs[int.Parse(block.Attribute("type").Value)],
                                                    float.Parse(block.Attribute("X").Value),
                                                    float.Parse(block.Attribute("Y").Value),
-                                                   bool.Parse(block.Attribute("destroyable").Value),
-                                                   bool.Parse(block.Attribute("passeble").Value)
+                                                   destroyable: bool.Parse(block.Attribute("destroyable").Value),
+                                                   passeble: bool.Parse(block.Attribute("passeble").Value)
                                                   )
                                         );
                 }

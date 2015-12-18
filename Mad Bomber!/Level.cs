@@ -33,7 +33,7 @@ namespace Mad_Bomber_
             this.blocks = blocks;
             this.mobs = mobs;
 
-            this.background = new Block(background, -1, 0.9f, false, true);
+            this.background = new Block(background, -1, 0.9f, destroyable:false, passeble:true);
         }
 
         public void drawLevel()

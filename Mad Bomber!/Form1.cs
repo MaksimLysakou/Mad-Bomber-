@@ -33,8 +33,8 @@ namespace Mad_Bomber_
 
             //Выпилить!
             thisGame.levels = XML.getListOfLevels("level.xml", "block.xml");
-            thisGame.activeLevel = thisGame.levels[0];            
-            thisGame.activeLevel.background = new Block("img\\background.png", 0, 0, false, true);
+            thisGame.activeLevel = thisGame.levels[0];
+            thisGame.activeLevel.background = new Block("img\\background.png", 0, 0, destroyable: false, passeble: true);
 
             
             

@@ -52,21 +52,45 @@ namespace Mad_Bomber_
         {
             if(keyboard.GetState("a") == true)
             {
+                Player temp = new Player("", players[0].position.X, players[0].position.Y - players[0].speed);
+                foreach(Block block in activeLevel.blocks)
+                {
+                    if(temp.IsCrossed(block) && block.isPasseble() == false)
+                        return;
+                }
                 players[0].position.Y -= players[0].speed;
             }
 
             if (keyboard.GetState("d") == true)
             {
+                Player temp = new Player("", players[0].position.X, players[0].position.Y+players[0].speed);
+                foreach(Block block in activeLevel.blocks)
+                {
+                    if (temp.IsCrossed(block) && block.isPasseble() == false)
+                        return;
+                }
                 players[0].position.Y += players[0].speed;
             }
 
             if (keyboard.GetState("w") == true)
             {
+                Player temp = new Player("", players[0].position.X-players[0].speed, players[0].position.Y);
+                foreach(Block block in activeLevel.blocks)
+                {
+                    if (temp.IsCrossed(block) && block.isPasseble() == false)
+                        return;
+                }
                 players[0].position.X -= players[0].speed;
             }
 
             if (keyboard.GetState("s") == true)
             {
+                Player temp = new Player("", players[0].position.X+players[0].speed, players[0].position.Y);
+                foreach(Block block in activeLevel.blocks)
+                {
+                    if (temp.IsCrossed(block) && block.isPasseble() == false)
+                        return;
+                }
                 players[0].position.X += players[0].speed;
             }
         }

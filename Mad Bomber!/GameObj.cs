@@ -12,7 +12,7 @@ namespace Mad_Bomber_
         //public enum Direction { NONE, UP, RIGHT, DOWN, LEFT }
 
         public int texture;
-        protected Point size;
+        public PointF size;
 
         public GameObj()
         {
@@ -37,11 +37,11 @@ namespace Mad_Bomber_
             this.texture = obj.texture;
         }
 
-        public int getWidth()
+        public float getWidth()
         {
             return size.X;
         }
-        public int getHeight()
+        public float getHeight()
         {
             return size.Y;
         }
