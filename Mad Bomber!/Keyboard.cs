@@ -13,7 +13,7 @@ namespace Mad_Bomber_
 
         public Keyboard()
         {
-            //Добавить пробел, эск, ентер и тп
+            //Добавить пробел, эск, ентер и  тп
             keys = new Dictionary<string, bool>();
 
             keys.Add("a", false);

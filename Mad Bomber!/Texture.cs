@@ -22,20 +22,15 @@ namespace Mad_Bomber_
             Glut.glutInit();
             Glut.glutInitDisplayMode(Glut.GLUT_RGB | Glut.GLUT_DOUBLE | Glut.GLUT_DEPTH);
 
-            // инициализация библиотеки openIL 
             Il.ilInit();
             Il.ilEnable(Il.IL_ORIGIN_SET);
 
-            Gl.glClearColor(255, 255, 255, 1); // отчитка окна 
+            Gl.glClearColor(255, 255, 255, 1);
 
-             // установка порта вывода в соответствии с размерами окна
-            
-            // настройка проекции 
             Gl.glMatrixMode(Gl.GL_PROJECTION);
             Gl.glLoadIdentity();
             Gl.glRotatef(270, 0, 0, 1);
             Glu.gluPerspective(0, RenderWindow.Width / (float)RenderWindow.Height, 0.1, 200);
-            //Gl.glTranslated(RenderWindow.Location.X, RenderWindow.Location.Y, 1);
             Gl.glMatrixMode(Gl.GL_MODELVIEW);
             Gl.glLoadIdentity();
 
@@ -45,24 +40,18 @@ namespace Mad_Bomber_
             int mGlTextureObject = -1;
             int imageId = 0;
 
-            // создаем изображение с идентификатором imageId 
             Il.ilGenImages(1, out imageId);
-            // делаем изображение текущим 
             Il.ilBindImage(imageId);
 
             Il.ilLoadImage(url);
 
-            // если загрузка прошла успешно 
-            // сохраняем размеры изображения 
             int width = Il.ilGetInteger(Il.IL_IMAGE_WIDTH);
             int height = Il.ilGetInteger(Il.IL_IMAGE_HEIGHT);
 
-            // определяем число бит на пиксель 
             int bitspp = Il.ilGetInteger(Il.IL_IMAGE_BITS_PER_PIXEL);
 
-            switch (bitspp) // в зависимости от полученного результата 
+            switch (bitspp)
             {
-                // создаем текстуру, используя режим GL_RGB или GL_RGBA 
                 case 24:
                     mGlTextureObject = MakeGlTexture(Gl.GL_RGB, Il.ilGetData(), width, height);
                     break;
@@ -70,8 +59,6 @@ namespace Mad_Bomber_
                     mGlTextureObject = MakeGlTexture(Gl.GL_RGBA, Il.ilGetData(), width, height);
                     break;
             }
-
-            // очищаем память 
             Il.ilDeleteImages(1, ref imageId);
 
             return mGlTextureObject;
@@ -90,16 +77,12 @@ namespace Mad_Bomber_
 
         private static int MakeGlTexture(int Format, IntPtr pixels, int w, int h)
         {
-            // идентификатор текстурного объекта 
             int texObject;
 
-            // генерируем текстурный объект 
             Gl.glGenTextures(1, out texObject);
 
-            // устанавливаем режим упаковки пикселей 
             Gl.glPixelStorei(Gl.GL_UNPACK_ALIGNMENT, 1);
 
-            // создаем привязку к только что созданной текстуре 
             Gl.glBindTexture(Gl.GL_TEXTURE_2D, texObject);
 
             // устанавливаем режим фильтрации и повторения текстуры 
@@ -109,7 +92,6 @@ namespace Mad_Bomber_
             Gl.glTexParameteri(Gl.GL_TEXTURE_2D, Gl.GL_TEXTURE_MIN_FILTER, Gl.GL_LINEAR);
             Gl.glTexEnvf(Gl.GL_TEXTURE_ENV, Gl.GL_TEXTURE_ENV_MODE, Gl.GL_REPLACE);
 
-            // создаем текстуру  (RGB/RGBA)
             switch (Format)
             {
                 case Gl.GL_RGB:

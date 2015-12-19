@@ -24,7 +24,7 @@ namespace Mad_Bomber_
            // GameFieldPosition.Y = (Texture.RenderWindow.Size.Height - activeLevel.size.Y) / 2;
 
             players = new List<Player>();
-            players.Add(new Player(".tico", 1, 1));
+            players.Add(new Player(".tico", 1.2f, 1));
             frame = "Game.Playing";
         }
 

@@ -9,8 +9,6 @@ namespace Mad_Bomber_
 {
     class GameObj
     {
-        //public enum Direction { NONE, UP, RIGHT, DOWN, LEFT }
-
         public int texture;
         public PointF size;
 

@@ -23,8 +23,6 @@ namespace Mad_Bomber_
 
             this.blocks = new List<Block>();
             this.mobs = new List<NPC>();
-
-            //this.background = new Block()
         }
         public Level(string name, List<Block> blocks, List<NPC> mobs, GameObj background)
         {

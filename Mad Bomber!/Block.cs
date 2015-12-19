@@ -62,17 +62,15 @@ namespace Mad_Bomber_
         {
             Gl.glEnable(Gl.GL_TEXTURE_2D);
             Gl.glBindTexture(Gl.GL_TEXTURE_2D, this.texture);
-
-            
             Gl.glPushMatrix();
+
             Gl.glTranslated((Texture.RenderWindow.Location.X + this.position.X) * 0.1f - 1, (Texture.RenderWindow.Location.Y + this.position.Y) * 0.05f - 1, 1);
             Gl.glRotated(rot, 0, 0, 1);
-
             Gl.glScalef((0.05f * scale * this.size.Y * Texture.RenderWindow.Width / Texture.RenderWindow.Height), 0.05f * scale * this.size.X, 0.0f);
 
 
-            // отрисовываем полигон 
             Gl.glBegin(Gl.GL_QUADS);
+
             Gl.glVertex2d(0, 0);
             Gl.glTexCoord2f(0, 0);
             Gl.glVertex2d(1, 0);
@@ -82,12 +80,10 @@ namespace Mad_Bomber_
             Gl.glVertex2d(0, 1);
             Gl.glTexCoord2f(0, 1);
 
-            // завершаем отрисовку 
             Gl.glEnd();
 
-            // возвращаем матрицу 
+
             Gl.glPopMatrix();
-            // отключаем режим текстурирования 
             Gl.glDisable(Gl.GL_TEXTURE_2D);
         }   
         public bool IsCrossed(Block block)

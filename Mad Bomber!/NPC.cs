@@ -13,13 +13,11 @@ namespace Mad_Bomber_
         public PointF position;
         public float speed;
 
-        //public GameObj.Direction direction;
-
-        public NPC(float y, float x, float scale = 1.0f/30)
+        public NPC(float y, float x, float scale = 1.0f/25)
             : base("img//heroK.png")
         {
             position = new PointF(x, y);
-            this.speed = 0.1f;
+            this.speed = 0.5f;
 
             this.size.X *= scale;
             this.size.Y *= scale;            

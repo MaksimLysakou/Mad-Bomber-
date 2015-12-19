@@ -10,7 +10,7 @@ namespace Mad_Bomber_
         private string nickName;
         public int score;
 
-        public Player(string nickName, float x, float y):base(x, y)
+        public Player(string nickName, float x, float y) : base(x, y)
         {
             this.nickName = nickName;
             this.score = 0;
